@@ -1,0 +1,132 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  padding: 2rem;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.logo-container {
+  margin-bottom: 4rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  filter: invert(1) brightness(1.2);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: #cccccc;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.hero-divider {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 0 auto;
+  animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 280px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 220px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
