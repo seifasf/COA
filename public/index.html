@@ -8,10 +8,81 @@
     <meta name="description" content="COA Holding Company - Coming Soon" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
     <title>COA Holding Company</title>
+    <style>
+      /* Disable text selection and image dragging */
+      * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+      }
+      
+      /* Allow text selection for input fields */
+      input, textarea {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+      
+      img {
+        pointer-events: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    
+    <script>
+      // Disable right-click context menu
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+      
+      // Disable copy, cut, and paste
+      document.addEventListener('copy', function(e) {
+        e.preventDefault();
+      });
+      
+      document.addEventListener('cut', function(e) {
+        e.preventDefault();
+      });
+      
+      document.addEventListener('paste', function(e) {
+        e.preventDefault();
+      });
+      
+      // Disable keyboard shortcuts for copy/paste
+      document.addEventListener('keydown', function(e) {
+        // Ctrl+C, Ctrl+X, Ctrl+V, Cmd+C, Cmd+X, Cmd+V
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'v')) {
+          e.preventDefault();
+        }
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U (dev tools)
+        if (e.key === 'F12' || 
+            ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+            ((e.ctrlKey || e.metaKey) && e.key === 'u')) {
+          e.preventDefault();
+        }
+      });
+      
+      // Disable drag and drop for images
+      document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+          e.preventDefault();
+        }
+      });
+    </script>
   </body>
 </html>
 
